@@ -40,7 +40,7 @@ const skills: Skill[] = [
     name: "TypeScript",
     icon: Braces,
     level: "Proficient",
-    percent: 82,
+    percent: 50,
     category: "Frontend",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
@@ -60,8 +60,8 @@ const skills: Skill[] = [
   {
     name: "HTML / CSS",
     icon: Layout,
-    level: "Advanced",
-    percent: 92,
+    level: "Intermediate",
+    percent: 40,
     category: "Frontend",
     projects: [
       { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
@@ -71,7 +71,7 @@ const skills: Skill[] = [
     name: "Figma",
     icon: Figma,
     level: "Proficient",
-    percent: 80,
+    percent: 70,
     category: "Design",
     projects: [
       { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
@@ -89,7 +89,7 @@ const skills: Skill[] = [
     name: "WordPress",
     icon: Globe,
     level: "Intermediate",
-    percent: 70,
+    percent: 60,
     category: "CMS",
     projects: [],
   },
@@ -115,7 +115,7 @@ const skills: Skill[] = [
     name: "Neon PostgreSQL",
     icon: Database,
     level: "Proficient",
-    percent: 78,
+    percent: 80,
     category: "Backend",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
