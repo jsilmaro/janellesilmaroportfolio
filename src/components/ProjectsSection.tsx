@@ -10,8 +10,11 @@ import designSample5 from "@/assets/design-sample-5.png";
 import designSample6 from "@/assets/design-sample-6.png";
 import designSample7 from "@/assets/design-sample-7.png";
 import designSample8 from "@/assets/design-sample-8.png";
+import designSample9 from "@/assets/design-sample-9.png";
+import designSample10 from "@/assets/design-sample-10.png";
+import designSample11 from "@/assets/design-sample-11.png";
 
-const designs = [designSample1, designSample2, designSample3, designSample4, designSample5, designSample6, designSample7, designSample8];
+const designs = [designSample1, designSample2, designSample3, designSample4, designSample5, designSample6, designSample7, designSample8, designSample9, designSample10, designSample11];
 
 const ProjectsSection = () => {
   const { ref, visible } = useScrollReveal();
@@ -106,20 +109,27 @@ const ProjectsSection = () => {
           Sample designs created for TapTopUp & RJ Games social media pages.
         </p>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {designs.map((src, i) => (
-            <button
-              type="button"
-              key={i}
-              onClick={() => setActiveIndex(i)}
-              aria-label={`View social media design ${i + 1}`}
-              className={`glass-card overflow-hidden group cursor-pointer hover:scale-[1.03] hover:glow-primary transition-all duration-500 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-              style={{ transitionDelay: visible ? `${i * 80 + 400}ms` : "0ms" }}
-            >
-              <div className="aspect-square overflow-hidden">
-                <img src={src} alt={`Social media design ${i + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-              </div>
-            </button>
-          ))}
+          {designs.map((src, i) => {
+            const isWide = i >= 8 && i <= 9; // banners 9 & 10 are wide headers
+            const isTall = i === 10; // poster 11 is portrait
+            return (
+              <button
+                type="button"
+                key={i}
+                onClick={() => setActiveIndex(i)}
+                aria-label={`View social media design ${i + 1}`}
+                className={`glass-card overflow-hidden group cursor-pointer hover:scale-[1.03] hover:glow-primary transition-all duration-500 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl
+                  ${isWide ? "col-span-2 md:col-span-2" : ""}
+                  ${isTall ? "col-span-1" : ""}
+                  ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
+                style={{ transitionDelay: visible ? `${i * 80 + 400}ms` : "0ms" }}
+              >
+                <div className={`overflow-hidden ${isWide ? "aspect-[4/1]" : "aspect-square"}`}>
+                  <img src={src} alt={`Social media design ${i + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+              </button>
+            );
+          })}
         </div>
       </div>
 
