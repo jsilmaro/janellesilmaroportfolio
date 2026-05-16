@@ -1,35 +1,16 @@
-import {
-  Code2,
-  Zap,
-  Figma,
-  Palette,
-  Globe,
-  Layout,
-  Github,
-  Database,
-  Server,
-  Braces,
-  type LucideIcon,
-} from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
-
-type Level = "Advanced" | "Proficient" | "Intermediate" | "Familiar";
 
 interface Skill {
   name: string;
-  icon: LucideIcon;
-  level: Level;
-  percent: number;
-  category: "Frontend" | "Design" | "CMS" | "Backend" | "Tools";
+  logo: string; // devicon class
+  category: string;
   projects: { label: string; href: string }[];
 }
 
 const skills: Skill[] = [
   {
     name: "React",
-    icon: Code2,
-    level: "Advanced",
-    percent: 90,
+    logo: "devicon-react-original colored",
     category: "Frontend",
     projects: [
       { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
@@ -38,114 +19,155 @@ const skills: Skill[] = [
   },
   {
     name: "TypeScript",
-    icon: Braces,
-    level: "Proficient",
-    percent: 50,
+    logo: "devicon-typescript-plain colored",
     category: "Frontend",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
       { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
+    ],
+  },
+  {
+    name: "JavaScript",
+    logo: "devicon-javascript-plain colored",
+    category: "Frontend",
+    projects: [
+      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
+    ],
+  },
+  {
+    name: "HTML5",
+    logo: "devicon-html5-plain colored",
+    category: "Frontend",
+    projects: [
+      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
+    ],
+  },
+  {
+    name: "CSS3",
+    logo: "devicon-css3-plain colored",
+    category: "Frontend",
+    projects: [
+      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
+    ],
+  },
+  {
+    name: "Tailwind CSS",
+    logo: "devicon-tailwindcss-plain colored",
+    category: "Frontend",
+    projects: [
+      { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
     ],
   },
   {
     name: "Vite",
-    icon: Zap,
-    level: "Proficient",
-    percent: 80,
-    category: "Frontend",
+    logo: "devicon-vitejs-plain colored",
+    category: "Tooling",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
     ],
   },
   {
-    name: "HTML / CSS",
-    icon: Layout,
-    level: "Intermediate",
-    percent: 40,
-    category: "Frontend",
-    projects: [
-      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
-    ],
-  },
-  {
-    name: "Figma",
-    icon: Figma,
-    level: "Proficient",
-    percent: 70,
-    category: "Design",
-    projects: [
-      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
-    ],
-  },
-  {
-    name: "Canva",
-    icon: Palette,
-    level: "Advanced",
-    percent: 90,
-    category: "Design",
-    projects: [{ label: "Social Media Designs", href: "#projects" }],
-  },
-  {
-    name: "WordPress",
-    icon: Globe,
-    level: "Intermediate",
-    percent: 60,
-    category: "CMS",
-    projects: [],
-  },
-  {
-    name: "Wix",
-    icon: Layout,
-    level: "Intermediate",
-    percent: 72,
-    category: "CMS",
-    projects: [],
-  },
-  {
-    name: "GitHub",
-    icon: Github,
-    level: "Proficient",
-    percent: 85,
+    name: "Git",
+    logo: "devicon-git-plain colored",
     category: "Tools",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
     ],
   },
   {
-    name: "Neon PostgreSQL",
-    icon: Database,
-    level: "Proficient",
-    percent: 80,
+    name: "GitHub",
+    logo: "devicon-github-original",
+    category: "Tools",
+    projects: [
+      { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
+    ],
+  },
+  {
+    name: "PostgreSQL",
+    logo: "devicon-postgresql-plain colored",
     category: "Backend",
     projects: [
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
     ],
   },
   {
-    name: "Back-End Concepts",
-    icon: Server,
-    level: "Proficient",
-    percent: 78,
+    name: "Node.js",
+    logo: "devicon-nodejs-plain colored",
     category: "Backend",
     projects: [
-      { label: "Capstone Archiving System", href: "https://capsortustpcdo.vercel.app/" },
       { label: "StewardDesk", href: "https://stewarddesk.vercel.app/" },
+      { label: "Capstone Archiving", href: "https://capsortustpcdo.vercel.app/" },
+    ],
+  },
+  {
+    name: "Figma",
+    logo: "devicon-figma-plain colored",
+    category: "Design",
+    projects: [
+      { label: "DraftBoard", href: "https://draftboard-b44q.vercel.app" },
     ],
   },
 ];
 
-const levelStyles: Record<Level, string> = {
-  Advanced: "bg-primary/15 text-primary border-primary/25",
-  Proficient: "bg-accent/15 text-accent border-accent/25",
-  Intermediate: "bg-secondary text-secondary-foreground border-border",
-  Familiar: "bg-muted text-muted-foreground border-border",
+// Split into two rows for alternating scroll directions
+const row1 = skills.slice(0, 6);
+const row2 = skills.slice(6);
+
+interface SkillCardProps {
+  skill: Skill;
+}
+
+const SkillCard = ({ skill }: SkillCardProps) => (
+  <div className="group relative flex flex-col items-center gap-2 px-5 py-4 rounded-xl glass-card hover:-translate-y-1 transition-all duration-300 cursor-default min-w-[100px]">
+    <i className={`${skill.logo} text-4xl`} />
+    <span className="text-xs font-medium text-center whitespace-nowrap">{skill.name}</span>
+
+    {/* Hover tooltip with projects */}
+    {skill.projects.length > 0 && (
+      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:flex flex-col gap-1 bg-popover border border-border rounded-lg p-2 shadow-lg z-20 min-w-[140px]">
+        <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">Projects</p>
+        {skill.projects.map((p) => (
+          <a
+            key={p.label}
+            href={p.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[11px] text-primary hover:underline whitespace-nowrap"
+          >
+            {p.label}
+          </a>
+        ))}
+      </div>
+    )}
+  </div>
+);
+
+const MarqueeRow = ({ items, reverse = false }: { items: Skill[]; reverse?: boolean }) => {
+  const doubled = [...items, ...items]; // duplicate for seamless loop
+  return (
+    <div className="overflow-hidden w-full">
+      <div
+        className={`flex gap-4 w-max ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
+      >
+        {doubled.map((skill, i) => (
+          <SkillCard key={`${skill.name}-${i}`} skill={skill} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 const SkillsSection = () => {
   const { ref, visible } = useScrollReveal();
 
   return (
-    <section id="skills" className="section-padding relative" ref={ref}>
+    <section id="skills" className="section-padding relative overflow-hidden" ref={ref}>
+      {/* Devicons CDN */}
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      />
+
       <div
         className={`max-w-6xl mx-auto relative z-10 transition-all duration-700 ${
           visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
@@ -158,68 +180,12 @@ const SkillsSection = () => {
           Tech <span className="text-gradient">Stack</span>
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-14 leading-relaxed">
-          Tools and technologies I work with, along with related projects where
-          I've put them into practice.
+          Tools and technologies I work with, along with related projects where I've put them into practice.
         </p>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {skills.map((s, i) => (
-            <div
-              key={s.name}
-              className={`glass-card p-5 rounded-xl group transition-all duration-300 hover:-translate-y-1 ${
-                visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: visible ? `${i * 60 + 150}ms` : "0ms" }}
-            >
-              <div className="flex items-start justify-between mb-4 gap-3">
-                <div className="flex items-center gap-3 min-w-0">
-                  <div className="w-10 h-10 shrink-0 rounded-md bg-primary/10 flex items-center justify-center group-hover:bg-primary/15 transition-colors">
-                    <s.icon size={18} className="text-primary" />
-                  </div>
-                  <div className="min-w-0">
-                    <h3 className="font-semibold text-sm truncate">{s.name}</h3>
-                    <p className="text-[11px] text-muted-foreground uppercase tracking-wider">
-                      {s.category}
-                    </p>
-                  </div>
-                </div>
-                <span
-                  className={`shrink-0 text-[10px] font-semibold px-2 py-1 rounded-full border ${levelStyles[s.level]}`}
-                >
-                  {s.level}
-                </span>
-              </div>
-
-              <div className="mb-4">
-                <div className="h-1.5 w-full rounded-full bg-secondary overflow-hidden">
-                  <div
-                    className="h-full bg-gradient-primary rounded-full transition-all duration-1000 ease-out"
-                    style={{ width: visible ? `${s.percent}%` : "0%" }}
-                  />
-                </div>
-              </div>
-
-              {s.projects.length > 0 ? (
-                <div className="flex flex-wrap gap-2">
-                  {s.projects.map((p) => (
-                    <a
-                      key={p.label}
-                      href={p.href}
-                      target={p.href.startsWith("http") ? "_blank" : undefined}
-                      rel={p.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                      className="text-[11px] px-2.5 py-1 rounded-full bg-primary/8 text-primary/80 hover:text-primary hover:bg-primary/15 font-medium transition-colors"
-                    >
-                      {p.label}
-                    </a>
-                  ))}
-                </div>
-              ) : (
-                <p className="text-[11px] text-muted-foreground italic">
-                  Used in client & personal work
-                </p>
-              )}
-            </div>
-          ))}
+        <div className="flex flex-col gap-6">
+          <MarqueeRow items={row1} />
+          <MarqueeRow items={row2} reverse />
         </div>
       </div>
     </section>
