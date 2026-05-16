@@ -8,7 +8,6 @@ import BookshelfSection from "@/components/BookshelfSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
-import FloatingScarf from "@/components/FloatingScarf";
 import aboutBg from "@/assets/about-bg.jpg";
 import experienceBg from "@/assets/experience-bg.jpg";
 import skillsBg from "@/assets/skills-bg.jpg";
@@ -41,24 +40,24 @@ const SectionBg = ({
     {/* Base dark overlay */}
     <div
       className="absolute inset-0 -z-10"
-      style={{ background: `rgba(0,0,0,${dimAmount})` }}
+      style={{ background: `rgba(4,3,2,${dimAmount})` }}
     />
 
-    {/* Top fade — image fades in from midnight */}
+    {/* Top fade — matches video shadow color */}
     <div
       className="absolute top-0 left-0 right-0 pointer-events-none z-10"
       style={{
-        height: "35%",
-        background: "linear-gradient(to bottom, rgba(10,10,16,1) 0%, rgba(10,10,16,0.5) 40%, transparent 100%)",
+        height: "55%",
+        background: "linear-gradient(to bottom, rgba(4,3,2,1) 0%, rgba(4,3,2,0.95) 20%, rgba(4,3,2,0.7) 45%, rgba(4,3,2,0.2) 75%, transparent 100%)",
       }}
     />
 
-    {/* Bottom fade — ends in subtle midnight fog */}
+    {/* Bottom fade — same warm black */}
     <div
       className="absolute bottom-0 left-0 right-0 pointer-events-none z-10"
       style={{
         height: "30%",
-        background: "linear-gradient(to top, rgba(10,10,16,1) 0%, rgba(10,10,16,0.4) 50%, transparent 100%)",
+        background: "linear-gradient(to top, rgba(4,3,2,1) 0%, rgba(4,3,2,0.4) 50%, transparent 100%)",
       }}
     />
 
@@ -145,13 +144,9 @@ const Index = () => (
       <AboutSection />
     </SectionBg>
 
-    {/* ── Experience: ── */}
+    {/* ── Experience + Skills — shared bg ── */}
     <SectionBg image={experienceBg} dimAmount={0.55}>
       <ExperienceSection />
-    </SectionBg>
-
-    {/* ── Skills ── */}
-    <SectionBg image={skillsBg} dimAmount={0.55}>
       <SkillsSection />
     </SectionBg>
 
@@ -172,7 +167,6 @@ const Index = () => (
     </SectionBg>
 
     <MusicPlayer />
-    <FloatingScarf />
 
   </div>
 );
