@@ -7,6 +7,7 @@ interface TypewriterProps {
   pauseTime?: number;
   className?: string;
   cursorClassName?: string;
+  style?: React.CSSProperties;
 }
 
 const Typewriter = ({
@@ -16,6 +17,7 @@ const Typewriter = ({
   pauseTime = 1600,
   className = "",
   cursorClassName = "",
+  style,
 }: TypewriterProps) => {
   const [text, setText] = useState("");
   const [wordIndex, setWordIndex] = useState(0);
@@ -48,7 +50,7 @@ const Typewriter = ({
   }, [text, deleting, wordIndex, words, typingSpeed, deletingSpeed, pauseTime]);
 
   return (
-    <span className={className} aria-live="polite">
+    <span className={className} style={style} aria-live="polite">
       {text}
       <span className={`inline-block w-[2px] ml-1 align-middle animate-cursor-blink ${cursorClassName}`}>
         |

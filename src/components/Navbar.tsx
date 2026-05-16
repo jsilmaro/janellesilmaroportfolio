@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "@/components/ThemeProvider";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "Home", href: "#home" },
@@ -32,8 +33,12 @@ const Navbar = () => {
       }`}
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#home" className="text-base font-semibold tracking-tight">
-          Janelle<span className="text-primary"> B. Silmaro</span>
+        <a href="#home" className="flex items-center">
+          <img
+            src={logo}
+            alt="Janelle B. Silmaro"
+            className="h-12 w-auto object-contain"
+          />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
