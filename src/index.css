@@ -50,49 +50,6 @@
     --gradient-accent: linear-gradient(135deg, #c8a030 0%, #8a6020 100%);
     --gradient-hero: linear-gradient(180deg, #080808 0%, #0a0a0a 100%);
   }
-
-  .light {
-    --background: 40 30% 92%;
-    --foreground: 30 25% 10%;
-
-    --card: 38 25% 88%;
-    --card-foreground: 30 25% 10%;
-
-    --popover: 38 25% 88%;
-    --popover-foreground: 30 25% 10%;
-
-    --primary: 38 65% 32%;
-    --primary-foreground: 40 30% 96%;
-
-    --secondary: 38 15% 82%;
-    --secondary-foreground: 30 20% 20%;
-
-    --muted: 38 15% 85%;
-    --muted-foreground: 30 10% 38%;
-
-    --accent: 30 55% 28%;
-    --accent-foreground: 40 30% 96%;
-
-    --destructive: 0 65% 44%;
-    --destructive-foreground: 40 30% 96%;
-
-    --border: 38 18% 72%;
-    --input: 38 18% 72%;
-    --ring: 38 65% 32%;
-
-    --sidebar-background: 38 25% 88%;
-    --sidebar-foreground: 30 25% 10%;
-    --sidebar-primary: 38 65% 30%;
-    --sidebar-primary-foreground: 40 30% 96%;
-    --sidebar-accent: 38 15% 82%;
-    --sidebar-accent-foreground: 30 20% 20%;
-    --sidebar-border: 38 18% 72%;
-    --sidebar-ring: 38 65% 30%;
-
-    --gradient-primary: linear-gradient(135deg, #8a6020 0%, #5a3c10 40%, #7a5018 70%, #4a2c08 100%);
-    --gradient-accent: linear-gradient(135deg, #7a5018, #4a2c08);
-    --gradient-hero: linear-gradient(180deg, hsl(40 30% 92%) 0%, hsl(38 25% 86%) 100%);
-  }
 }
 
 @layer base {
@@ -154,13 +111,6 @@
     border-radius: 2px;
   }
 
-  .light .glass-card {
-    background: rgba(245, 238, 220, 0.95);
-    border: 1px solid rgba(140, 90, 20, 0.35);
-    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15),
-      inset 0 1px 0 rgba(255, 220, 120, 0.3);
-  }
-
   .glass-card:hover {
     border-color: rgba(200, 150, 50, 0.60);
     background: rgba(10, 8, 4, 0.95);
@@ -168,12 +118,6 @@
       0 8px 48px rgba(0, 0, 0, 0.9),
       0 0 28px rgba(180, 130, 40, 0.15),
       inset 0 1px 0 rgba(220, 170, 60, 0.12);
-  }
-
-  .light .glass-card:hover {
-    border-color: rgba(140, 90, 20, 0.55);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.18),
-      0 0 20px rgba(160, 110, 30, 0.12);
   }
 
   .glow-primary {

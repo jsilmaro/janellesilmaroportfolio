@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Moon } from "lucide-react";
-import { useTheme } from "@/components/ThemeProvider";
+import { Menu, X } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -16,7 +15,6 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -34,11 +32,7 @@ const Navbar = () => {
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
         <a href="#home" className="flex items-center">
-          <img
-            src={logo}
-            alt="Janelle B. Silmaro"
-            className="h-12 w-auto object-contain"
-          />
+          <img src={logo} alt="Janelle B. Silmaro" className="h-12 w-auto object-contain" />
         </a>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((l) => (
@@ -50,22 +44,8 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-          </button>
         </div>
         <div className="flex items-center gap-2 md:hidden">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-md text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
-            aria-label="Toggle theme"
-          >
-            {theme === "dark" ? <Sun size={17} /> : <Moon size={17} />}
-          </button>
           <button
             className="text-foreground"
             onClick={() => setMobileOpen(!mobileOpen)}
