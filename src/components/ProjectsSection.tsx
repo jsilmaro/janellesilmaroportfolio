@@ -111,33 +111,39 @@ const ProjectsSection = () => {
           ))}
         </div>
 
-        {/* Social Media Designs */}
-        <h3 className="text-lg font-bold mb-6 text-center">
+        {/* Social Media Designs Gallery */}
+        <h3 className="text-lg font-bold mb-2 text-center">
           Social Media <span className="text-gradient-accent">Designs</span>
         </h3>
         <p className="text-muted-foreground text-center text-sm mb-8">
           Sample designs created for TapTopUp & RJ Games social media pages.
         </p>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {designs.map((src, i) => {
-            const isWide = i >= 8 && i <= 9;
-            return (
-              <button
-                type="button"
-                key={i}
-                onClick={() => setActiveIndex(i)}
-                aria-label={`View social media design ${i + 1}`}
-                className={`glass-card overflow-hidden group cursor-pointer hover:scale-[1.03] hover:glow-primary transition-all duration-500 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-2xl
-                  ${isWide ? "col-span-2" : ""}
-                  ${visible ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}
-                style={{ transitionDelay: visible ? `${i * 80 + 400}ms` : "0ms" }}
-              >
-                <div className={`overflow-hidden ${isWide ? "aspect-[4/1]" : "aspect-square"}`}>
-                  <img src={src} alt={`Social media design ${i + 1}`} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                </div>
-              </button>
-            );
-          })}
+
+        {/* Masonry gallery using CSS columns */}
+        <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
+          {designs.map((src, i) => (
+            <button
+              type="button"
+              key={i}
+              onClick={() => setActiveIndex(i)}
+              aria-label={`View social media design ${i + 1}`}
+              className={`group relative w-full break-inside-avoid overflow-hidden rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background block transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+              style={{ transitionDelay: visible ? `${i * 60 + 400}ms` : "0ms" }}
+            >
+              <img
+                src={src}
+                alt={`Social media design ${i + 1}`}
+                loading="lazy"
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl"
+              />
+              {/* Hover overlay */}
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
+                <span className="text-white text-xs font-medium px-3 py-1.5 rounded-full bg-white/20 backdrop-blur border border-white/30">
+                  View
+                </span>
+              </div>
+            </button>
+          ))}
         </div>
       </div>
 
