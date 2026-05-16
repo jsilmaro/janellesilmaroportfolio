@@ -17,54 +17,70 @@ const ExperienceSection = () => {
 
   return (
     <section id="experience" className="section-padding relative" ref={ref}>
-      <div className="max-w-4xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <p className={`text-xs font-semibold tracking-[0.25em] uppercase text-primary text-center mb-3 transition-all duration-700 ${visible ? "opacity-100" : "opacity-0"}`}>
           Experience
         </p>
         <h2 className={`text-3xl md:text-4xl font-bold mb-14 text-center transition-all duration-700 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
           Work <span className="text-gradient">Experience</span>
         </h2>
-        <div className="relative">
-          <div className="absolute left-5 md:left-6 top-0 bottom-0 w-px bg-border/40" />
 
-          <div className="space-y-8">
-            {experiences.map((exp, i) => (
-              <div
-                key={i}
-                className={`relative pl-14 md:pl-16 transition-all duration-700 ${visible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-8"}`}
-                style={{ transitionDelay: visible ? `${i * 120 + 200}ms` : "0ms" }}
-              >
-                <div className="absolute left-3.5 md:left-4.5 top-2 w-3 h-3 rounded-full bg-primary/80 border-[3px] border-background" />
-                <div className="glass-card p-6 hover:glow-primary hover:scale-[1.01] transition-all duration-500">
-                  <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-1 mb-2">
-                    <h3 className="font-semibold text-base">{exp.role}</h3>
-                    <span className="text-xs text-primary/80 font-medium px-3 py-1 rounded-full bg-primary/8">{exp.period}</span>
-                  </div>
-                  <div className="flex items-center gap-2 text-sm text-muted-foreground mb-3">
-                    {(exp as any).isChurch ? <Church size={13} className="text-primary/50" /> : <Briefcase size={13} className="text-primary/50" />}
-                    <span>{exp.company}</span>
-                    <span className="text-border">·</span>
-                    <span>{exp.location}</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{exp.desc}</p>
-                  {exp.link && (
-                    <a href={exp.link} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1.5 text-xs text-primary hover:underline mt-2">
-                      {exp.linkLabel || "View"} <ExternalLink size={11} />
-                    </a>
-                  )}
-                  {(exp as any).isChurch && (
-                    <div className="flex gap-3 mt-4">
-                      {[churchMedia1, churchMedia2].map((src, j) => (
-                        <div key={j} className="w-20 h-20 rounded-lg overflow-hidden border border-border/30">
-                          <img src={src} alt={`Church media work ${j + 1}`} className="w-full h-full object-cover" loading="lazy" />
-                        </div>
-                      ))}
-                    </div>
-                  )}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {experiences.map((exp, i) => (
+            <div
+              key={i}
+              className={`glass-card p-5 rounded-xl flex flex-col gap-3 hover:glow-primary hover:-translate-y-1 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: visible ? `${i * 100 + 200}ms` : "0ms" }}
+            >
+              {/* Header */}
+              <div className="flex items-start justify-between gap-2">
+                <div className="w-9 h-9 shrink-0 rounded-md bg-primary/10 flex items-center justify-center">
+                  {(exp as any).isChurch
+                    ? <Church size={16} className="text-primary" />
+                    : <Briefcase size={16} className="text-primary" />}
                 </div>
+                <span className="text-[10px] text-primary/80 font-medium px-2.5 py-1 rounded-full bg-primary/8 text-right leading-tight">
+                  {exp.period}
+                </span>
               </div>
-            ))}
-          </div>
+
+              {/* Role & Company */}
+              <div>
+                <h3 className="font-semibold text-sm leading-snug">{exp.role}</h3>
+                <p className="text-xs text-muted-foreground mt-0.5">{exp.company}</p>
+                <p className="text-[11px] text-muted-foreground/70 mt-0.5">{exp.location}</p>
+              </div>
+
+              {/* Divider */}
+              <div className="h-px bg-border/40" />
+
+              {/* Description */}
+              <p className="text-xs text-muted-foreground leading-relaxed flex-1">{exp.desc}</p>
+
+              {/* Link */}
+              {exp.link && (
+                <a
+                  href={exp.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                >
+                  {exp.linkLabel || "View"} <ExternalLink size={11} />
+                </a>
+              )}
+
+              {/* Church media thumbnails */}
+              {(exp as any).isChurch && (
+                <div className="flex gap-2 mt-1">
+                  {[churchMedia1, churchMedia2].map((src, j) => (
+                    <div key={j} className="w-16 h-16 rounded-lg overflow-hidden border border-border/30">
+                      <img src={src} alt={`Church media work ${j + 1}`} className="w-full h-full object-cover" loading="lazy" />
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
