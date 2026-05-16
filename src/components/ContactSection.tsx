@@ -1,5 +1,6 @@
-import { Mail, Phone, MapPin, ArrowRight, Github, Linkedin, Instagram } from "lucide-react";
+import { Mail, Phone, MapPin, Github, Linkedin, Instagram } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import contactBtn from "@/assets/contact-btn.png";
 
 const ContactSection = () => {
   const { ref, visible } = useScrollReveal();
@@ -74,11 +75,52 @@ const ContactSection = () => {
         </div>
 
         <a
-          href="mailto:silmaro.janelle84686@gmail.com"
-          className="group inline-flex items-center gap-2 px-6 py-3 rounded-md bg-primary text-primary-foreground font-medium text-sm hover:bg-primary/90 transition-all duration-300"
+          href="/resume.pdf"
+          download
+          aria-label="Download Resume"
+          className="inline-flex flex-col items-center gap-2 group"
+          style={{ transition: "transform 0.3s ease" }}
+          onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-3px) scale(1.04)")}
+          onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0) scale(1)")}
         >
-          Say Hello
-          <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+          {/* Image with depth effects */}
+          <div className="relative">
+            {/* Soft shadow beneath — gives it a floating/lifted look */}
+            <div
+              className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-4 rounded-full pointer-events-none"
+              style={{
+                background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%)",
+                filter: "blur(6px)",
+                transition: "opacity 0.3s",
+              }}
+            />
+
+            <img
+              src={contactBtn}
+              alt="Download Resume"
+              className="h-20 w-auto object-contain relative z-10"
+              style={{
+                filter:
+                  "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))",
+                transition: "filter 0.3s ease",
+              }}
+              onMouseEnter={e =>
+                ((e.currentTarget as HTMLImageElement).style.filter =
+                  "drop-shadow(0 10px 24px rgba(0,0,0,0.7)) drop-shadow(0 2px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 22px rgba(212,175,55,0.45))")
+              }
+              onMouseLeave={e =>
+                ((e.currentTarget as HTMLImageElement).style.filter =
+                  "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))")
+              }
+            />
+          </div>
+
+          <span
+            className="text-xs tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+            style={{ color: "#d4af37", fontFamily: "'Cinzel', serif" }}
+          >
+            Download Resume
+          </span>
         </a>
       </div>
     </section>

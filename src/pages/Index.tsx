@@ -7,6 +7,8 @@ import ProjectsSection from "@/components/ProjectsSection";
 import BookshelfSection from "@/components/BookshelfSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
+import MusicPlayer from "@/components/MusicPlayer";
+import FloatingScarf from "@/components/FloatingScarf";
 import aboutBg from "@/assets/about-bg.jpg";
 import experienceBg from "@/assets/experience-bg.jpg";
 import skillsBg from "@/assets/skills-bg.jpg";
@@ -168,6 +170,9 @@ const Index = () => (
       <ContactSection />
       <Footer />
     </SectionBg>
+
+    <MusicPlayer />
+    <FloatingScarf />
 
   </div>
 );

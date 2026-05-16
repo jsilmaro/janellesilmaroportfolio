@@ -205,9 +205,68 @@
   100% { transform: translateX(0px)    translateY(0px)   rotate(-8deg); }
 }
 
+@keyframes chosen-appear {
+  0%   { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+  40%  { opacity: 1; transform: translate(-50%, -50%) scale(1.05); }
+  70%  { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+  100% { opacity: 0; transform: translate(-50%, -50%) scale(1.1); }
+}
+
 html { scroll-behavior: smooth; }
 
 ::-webkit-scrollbar       { width: 4px; }
 ::-webkit-scrollbar-track { background: #080808; }
 ::-webkit-scrollbar-thumb { background: rgba(180, 130, 40, 0.35); border-radius: 2px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(200, 160, 60, 0.6); }
+
+/* ── Scarf 1 — position drift (upward bias, irregular) ── */
+@keyframes scarf1-float {
+  0%   { transform: translate(0px,    0px)   rotate(-12deg); opacity: 0.75; }
+  8%   { transform: translate(18px,  -22px)  rotate(-8deg);  opacity: 0.85; }
+  20%  { transform: translate(38px,  -55px)  rotate(-14deg); opacity: 0.9;  }
+  33%  { transform: translate(22px,  -90px)  rotate(-7deg);  opacity: 0.88; }
+  47%  { transform: translate(50px, -118px)  rotate(-16deg); opacity: 0.92; }
+  60%  { transform: translate(30px, -145px)  rotate(-9deg);  opacity: 0.85; }
+  72%  { transform: translate(55px, -170px)  rotate(-13deg); opacity: 0.8;  }
+  85%  { transform: translate(35px, -140px)  rotate(-10deg); opacity: 0.87; }
+  100% { transform: translate(0px,    0px)   rotate(-12deg); opacity: 0.75; }
+}
+
+/* ── Scarf 1 — fabric warp (perspective skew simulating 3D bend) ── */
+@keyframes scarf1-warp {
+  0%   { transform: perspective(400px) rotateX(4deg)  rotateY(-6deg)  skewX(2deg)  scaleX(1);    }
+  12%  { transform: perspective(400px) rotateX(8deg)  rotateY(-2deg)  skewX(-3deg) scaleX(0.97); }
+  25%  { transform: perspective(400px) rotateX(2deg)  rotateY(-9deg)  skewX(5deg)  scaleX(1.02); }
+  38%  { transform: perspective(400px) rotateX(10deg) rotateY(-4deg)  skewX(-2deg) scaleX(0.96); }
+  52%  { transform: perspective(400px) rotateX(3deg)  rotateY(-11deg) skewX(4deg)  scaleX(1.03); }
+  65%  { transform: perspective(400px) rotateX(7deg)  rotateY(-3deg)  skewX(-4deg) scaleX(0.98); }
+  78%  { transform: perspective(400px) rotateX(1deg)  rotateY(-8deg)  skewX(3deg)  scaleX(1.01); }
+  90%  { transform: perspective(400px) rotateX(6deg)  rotateY(-5deg)  skewX(-1deg) scaleX(0.99); }
+  100% { transform: perspective(400px) rotateX(4deg)  rotateY(-6deg)  skewX(2deg)  scaleX(1);    }
+}
+
+/* ── Scarf 2 — position drift (different rhythm, also upward) ── */
+@keyframes scarf2-float {
+  0%   { transform: translate(0px,   0px)   rotate(8deg);  opacity: 0.7;  }
+  10%  { transform: translate(-22px, -18px) rotate(12deg); opacity: 0.82; }
+  24%  { transform: translate(-10px, -48px) rotate(6deg);  opacity: 0.88; }
+  37%  { transform: translate(-30px, -80px) rotate(14deg); opacity: 0.85; }
+  50%  { transform: translate(-15px,-108px) rotate(7deg);  opacity: 0.9;  }
+  63%  { transform: translate(-35px,-132px) rotate(11deg); opacity: 0.83; }
+  76%  { transform: translate(-20px,-115px) rotate(9deg);  opacity: 0.87; }
+  88%  { transform: translate(-8px,  -60px) rotate(13deg); opacity: 0.8;  }
+  100% { transform: translate(0px,   0px)   rotate(8deg);  opacity: 0.7;  }
+}
+
+/* ── Scarf 2 — fabric warp ── */
+@keyframes scarf2-warp {
+  0%   { transform: perspective(400px) rotateX(-3deg) rotateY(7deg)  skewX(-2deg) scaleX(1);    }
+  15%  { transform: perspective(400px) rotateX(-8deg) rotateY(3deg)  skewX(4deg)  scaleX(1.02); }
+  28%  { transform: perspective(400px) rotateX(-2deg) rotateY(10deg) skewX(-5deg) scaleX(0.97); }
+  42%  { transform: perspective(400px) rotateX(-9deg) rotateY(5deg)  skewX(3deg)  scaleX(1.03); }
+  55%  { transform: perspective(400px) rotateX(-4deg) rotateY(12deg) skewX(-3deg) scaleX(0.98); }
+  68%  { transform: perspective(400px) rotateX(-7deg) rotateY(4deg)  skewX(5deg)  scaleX(1.01); }
+  82%  { transform: perspective(400px) rotateX(-1deg) rotateY(9deg)  skewX(-4deg) scaleX(0.99); }
+  92%  { transform: perspective(400px) rotateX(-5deg) rotateY(6deg)  skewX(2deg)  scaleX(1.02); }
+  100% { transform: perspective(400px) rotateX(-3deg) rotateY(7deg)  skewX(-2deg) scaleX(1);    }
+}

@@ -1,6 +1,7 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { MapPin, GraduationCap, ArrowRight, Mail } from "lucide-react";
 import Typewriter from "@/components/Typewriter";
+import FlyingEagle from "@/components/FlyingEagle";
 
 // Gold diamond divider — like the HL UI dividers
 const GoldDivider = ({ className = "" }: { className?: string }) => (
@@ -19,6 +20,9 @@ const HeroSection = () => (
     id="home"
     className="min-h-screen flex items-center justify-center section-padding pt-32 relative overflow-hidden"
   >
+    {/* Flying eagle with girl — animated sprite */}
+    <FlyingEagle />
+
     {/* Ambient golden orb */}
     <div
       className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full pointer-events-none animate-glow-pulse"
