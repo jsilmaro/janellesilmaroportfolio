@@ -18,9 +18,15 @@ const designs = [designSample1, designSample2, designSample3, designSample4, des
 
 const projects = [
   {
+    title: "Aureva",
+    type: "Web Application",
+    tags: ["PHP", "Javascript"],
+    links: [{label: "Live Site", href: "https://aureva.kaisen.cloud/"}],
+  },
+  {
     title: "DraftBoard",
     type: "Web Application",
-    tags: ["React", "TypeScript", "Tailwind CSS", "Supabase"],
+    tags: ["React", "Node js", "Tailwind CSS", "Neon"],
     links: [{ label: "Live Site", href: "https://draftboard-b44q.vercel.app" }],
   },
   {
