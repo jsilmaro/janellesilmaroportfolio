@@ -3,7 +3,7 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const skills = [
   { icon: Code2, label: "Web Development", desc: "React, TypeScript, Back-End" },
-  { icon: Palette, label: "UI/UX Design", desc: "Clean interfaces, User-first" },
+  { icon: Palette, label: "UI/UX Design", desc: "Fictional-inspired, user-first" },
   { icon: Megaphone, label: "Social Media", desc: "Content, Design, Strategy" },
   { icon: BookOpen, label: "Continuous Learner", desc: "CS Student, Avid Reader" },
 ];
@@ -25,8 +25,7 @@ const AboutSection = () => {
           A bit about <span className="text-gradient">me</span>
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-14 leading-relaxed">
-          I'm a 3rd-year Computer Science student at USTP, passionate about building things for the
-          web, designing clean user experiences, and continuously learning new technologies.
+        Incoming 3rd-year Computer Science student at the University of Science and Technology of Southern Philippines. Growing up reading fictional and imaginative stories shaped my creativity and sparked my interest in building meaningful digital experiences through design and code. Passionate about full-stack web development, UI/UX, and social media storytelling, I enjoy creating projects that feel intentional, polished, and engaging — from apps like DraftBoard and StewardDesk to posters for gaming communities and client websites I’ve helped manage.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {skills.map((s, i) => (

@@ -53,7 +53,7 @@ const HeroSection = () => (
           }}
         >
           <Typewriter
-            words={["Janelle B. Silmaro", "Web Developer", "UI/UX Designer", "CS Student"]}
+            words={["Janelle B. Silmaro"]}
             className=""
             cursorClassName="text-[#c8a030]"
             style={{
@@ -76,10 +76,7 @@ const HeroSection = () => (
             animationDelay: "0.2s",
           }}
         >
-          Computer Science student and developer focused on building clean,
-          user-centered web experiences. Experienced with React, TypeScript,
-          and back-end development — collaborating with teams to ship reliable,
-          well-designed products.
+          Incoming 3rd-year Computer Science student at the University of Science and Technology of Southern Philippines. Growing up reading fictional and imaginative stories shaped my creativity and sparked my interest in building meaningful digital experiences through design and code. Passionate about full-stack web development, UI/UX, and social media storytelling, I enjoy creating projects that feel intentional, polished, and engaging — from apps like DraftBoard and StewardDesk to posters for gaming communities and client websites I’ve helped manage.
         </p>
 
         {/* Meta info */}
