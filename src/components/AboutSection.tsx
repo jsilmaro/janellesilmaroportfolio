@@ -25,7 +25,7 @@ const AboutSection = () => {
           A bit about <span className="text-gradient">me</span>
         </h2>
         <p className="text-muted-foreground text-center max-w-2xl mx-auto mb-14 leading-relaxed">
-        Incoming 3rd-year Computer Science student at the University of Science and Technology of Southern Philippines. Growing up reading fictional and imaginative stories shaped my creativity and sparked my interest in building meaningful digital experiences through design and code. Passionate about full-stack web development, UI/UX, and social media storytelling, I enjoy creating projects that feel intentional, polished, and engaging — from apps like DraftBoard and StewardDesk to posters for gaming communities and client websites I’ve helped manage.
+        Computer Science student at the University of Science and Technology of Southern Philippines with a passion for building thoughtful digital experiences. Inspired by fiction and storytelling, I enjoy combining web development, design, and creativity into projects that feel clean, purposeful, and engaging.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {skills.map((s, i) => (
