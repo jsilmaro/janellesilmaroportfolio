@@ -87,7 +87,7 @@ const Index = () => (
           src="/bg-video.mp4"
           autoPlay loop muted playsInline
         />
-        <div className="absolute inset-0" style={{ background: "rgba(4,3,2,0.72)" }} />
+        <div className="absolute inset-0" style={{ background: "rgba(4, 3, 2, 0.47)0)" }} />
 
         {/* Stars */}
         {STARS.map((s, i) => (

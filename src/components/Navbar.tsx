@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Moon } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navLinks = [
@@ -15,12 +15,23 @@ const navLinks = [
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [isLight, setIsLight] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const toggleTheme = () => {
+    const html = document.documentElement;
+    if (isLight) {
+      html.classList.remove("light");
+    } else {
+      html.classList.add("light");
+    }
+    setIsLight(!isLight);
+  };
 
   return (
     <nav
