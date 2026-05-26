@@ -1,0 +1,31 @@
+{
+  "mcpServers": {
+    "web search": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "brave/brave-search-mcp-server",
+        "--transport",
+        "stdio"
+      ],
+      "env": {},
+      "disabled": true,
+      "autoApprove": []
+    },
+    "playwright": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@playwright/mcp@latest"
+      ],
+      "disabled": false,
+      "autoApprove": [
+        "browser_navigate",
+        "browser_snapshot",
+        "browser_click",
+        "browser_type",
+        "browser_take_screenshot"
+      ]
+    }
+  }
+}

@@ -8,6 +8,7 @@ import BookshelfSection from "@/components/BookshelfSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import MusicPlayer from "@/components/MusicPlayer";
+import FlyingEnvelope from "@/components/FlyingEnvelope";
 import aboutBg from "@/assets/about-bg.jpg";
 import experienceBg from "@/assets/experience-bg.jpg";
 import skillsBg from "@/assets/skills-bg.jpg";
@@ -167,6 +168,7 @@ const Index = () => (
     </SectionBg>
 
     <MusicPlayer />
+    <FlyingEnvelope />
 
   </div>
 );

@@ -74,54 +74,53 @@ const ContactSection = () => {
           </a>
         </div>
 
-        <a
-          href="/resume.pdf"
-          download
-          aria-label="Download Resume"
-          className="inline-flex flex-col items-center gap-2 group"
-          style={{ transition: "transform 0.3s ease" }}
-          onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-3px) scale(1.04)")}
-          onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0) scale(1)")}
-        >
-          {/* Image with depth effects */}
-          <div className="relative">
-            {/* Soft shadow beneath — gives it a floating/lifted look */}
-            <div
-              className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-4 rounded-full pointer-events-none"
-              style={{
-                background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%)",
-                filter: "blur(6px)",
-                transition: "opacity 0.3s",
-              }}
-            />
-
-            <img
-              src={contactBtn}
-              alt="Download Resume"
-              className="h-20 w-auto object-contain relative z-10"
-              style={{
-                filter:
-                  "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))",
-                transition: "filter 0.3s ease",
-              }}
-              onMouseEnter={e =>
-                ((e.currentTarget as HTMLImageElement).style.filter =
-                  "drop-shadow(0 10px 24px rgba(0,0,0,0.7)) drop-shadow(0 2px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 22px rgba(212,175,55,0.45))")
-              }
-              onMouseLeave={e =>
-                ((e.currentTarget as HTMLImageElement).style.filter =
-                  "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))")
-              }
-            />
-          </div>
-
-          <span
-            className="text-xs tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-300"
-            style={{ color: "#d4af37", fontFamily: "'Cinzel', serif" }}
+        {/* Envelope landing anchor — the flying envelope snaps here on scroll */}
+        <div id="envelope-anchor" className="flex items-center justify-center" style={{ minHeight: 100 }}>
+          {/* This content is hidden until the flying envelope lands */}
+          <a
+            id="envelope-anchor-content"
+            href="/resume.pdf"
+            download
+            aria-label="Download Resume"
+            className="inline-flex flex-col items-center gap-2 group"
+            style={{ opacity: 0, transition: "transform 0.3s ease" }}
+            onMouseEnter={e => (e.currentTarget.style.transform = "translateY(-3px) scale(1.04)")}
+            onMouseLeave={e => (e.currentTarget.style.transform = "translateY(0) scale(1)")}
           >
-            Download Resume
-          </span>
-        </a>
+            <div className="relative">
+              <div
+                className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-4/5 h-4 rounded-full pointer-events-none"
+                style={{
+                  background: "radial-gradient(ellipse, rgba(0,0,0,0.55) 0%, transparent 70%)",
+                  filter: "blur(6px)",
+                }}
+              />
+              <img
+                src={contactBtn}
+                alt="Download Resume"
+                className="h-20 w-auto object-contain relative z-10"
+                style={{
+                  filter: "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))",
+                  transition: "filter 0.3s ease",
+                }}
+                onMouseEnter={e =>
+                  ((e.currentTarget as HTMLImageElement).style.filter =
+                    "drop-shadow(0 10px 24px rgba(0,0,0,0.7)) drop-shadow(0 2px 6px rgba(0,0,0,0.5)) drop-shadow(0 0 22px rgba(212,175,55,0.45))")
+                }
+                onMouseLeave={e =>
+                  ((e.currentTarget as HTMLImageElement).style.filter =
+                    "drop-shadow(0 6px 16px rgba(0,0,0,0.6)) drop-shadow(0 2px 4px rgba(0,0,0,0.4)) drop-shadow(0 0 12px rgba(212,175,55,0.25))")
+                }
+              />
+            </div>
+            <span
+              className="text-xs tracking-[0.3em] uppercase opacity-60 group-hover:opacity-100 transition-opacity duration-300"
+              style={{ color: "#d4af37", fontFamily: "'Cinzel', serif" }}
+            >
+              Download Resume
+            </span>
+          </a>
+        </div>
       </div>
     </section>
   );
