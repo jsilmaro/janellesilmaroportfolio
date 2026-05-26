@@ -136,28 +136,28 @@ const Index = () => (
       {/* Dark fog closing at the bottom of hero */}
       <div
         className="relative z-10 h-40 -mt-40 pointer-events-none"
-        style={{ background: "linear-gradient(to bottom, transparent 0%, #000000 100%)" }}
+        style={{ background: "linear-gradient(to bottom, transparent 0%, #000000ff 100%)" }}
       />
     </div>
 
     {/* ── About: magical forest scene ── */}
-    <SectionBg image={aboutBg} dimAmount={0.45}>
+    <SectionBg image={aboutBg} dimAmount={0.30}>
       <AboutSection />
     </SectionBg>
 
     {/* ── Experience + Skills — shared bg ── */}
-    <SectionBg image={experienceBg} dimAmount={0.55}>
+    <SectionBg image={experienceBg} dimAmount={0.40}>
       <ExperienceSection />
       <SkillsSection />
     </SectionBg>
 
     {/* ── Projects ── */}
-    <SectionBg image={projectsBg} dimAmount={0.55}>
+    <SectionBg image={projectsBg} dimAmount={0.20}>
       <ProjectsSection />
     </SectionBg>
 
     {/* ── Bookshelf ── */}
-    <SectionBg image={bookshelfBg} dimAmount={0.50}>
+    <SectionBg image={bookshelfBg} dimAmount={0.20}>
       <BookshelfSection />
     </SectionBg>
 
