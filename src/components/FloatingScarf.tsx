@@ -77,8 +77,8 @@ const FloatingScarf = () => {
 
   return (
     <div className="fixed inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 3 }}>
-      <ScarfOne size={240} />
-      <ScarfTwo size={195} />
+      <ScarfOne size={typeof window !== "undefined" && window.innerWidth < 768 ? 140 : 240} />
+      <ScarfTwo size={typeof window !== "undefined" && window.innerWidth < 768 ? 110 : 195} />
     </div>
   );
 };

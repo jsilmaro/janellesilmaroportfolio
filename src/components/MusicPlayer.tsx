@@ -1,9 +1,44 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Volume2, VolumeX } from "lucide-react";
 
 const MusicPlayer = () => {
   const audioRef = useRef<HTMLAudioElement>(null);
   const [playing, setPlaying] = useState(false);
+
+  const startAudio = () => {
+    const audio = audioRef.current;
+    if (!audio || playing) return;
+    audio.volume = 0.35;
+    audio.loop = true;
+    audio.play().then(() => setPlaying(true)).catch(() => {});
+  };
+
+  // Try autoplay on mount; if blocked, play on first user gesture
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    audio.volume = 0.35;
+    audio.loop = true;
+
+    audio.play()
+      .then(() => setPlaying(true))
+      .catch(() => {
+        // Browser blocked autoplay — wait for first interaction
+        const onInteract = () => {
+          startAudio();
+          window.removeEventListener("click",   onInteract);
+          window.removeEventListener("scroll",  onInteract);
+          window.removeEventListener("keydown", onInteract);
+          window.removeEventListener("touchstart", onInteract);
+        };
+        window.addEventListener("click",      onInteract, { once: true });
+        window.addEventListener("scroll",     onInteract, { once: true });
+        window.addEventListener("keydown",    onInteract, { once: true });
+        window.addEventListener("touchstart", onInteract, { once: true });
+      });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const toggle = () => {
     const audio = audioRef.current;
@@ -12,8 +47,6 @@ const MusicPlayer = () => {
       audio.pause();
       setPlaying(false);
     } else {
-      audio.volume = 0.35;
-      audio.loop = true;
       audio.play().then(() => setPlaying(true)).catch(() => {});
     }
   };

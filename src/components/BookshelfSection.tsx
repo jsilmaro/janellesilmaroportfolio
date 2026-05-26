@@ -46,24 +46,26 @@ const books: Book[] = [
   { title: "The Abundance Formula", author: "Bo Sanchez", cover: bookAbundanceFormula, category: "Bo Sanchez", spine: "#1a2a00" },
 ];
 
-const SHELF_SIZE = 7; // books per shelf row
+const SHELF_SIZE = 7; // books per shelf row on desktop
+const SHELF_SIZE_MOBILE = 4;
 const categories = ["All", "Sarah J. Maas", "Rick Riordan", "Holly Black", "Bo Sanchez", "Others"];
 
 // Split books into shelf rows
-const toShelves = (list: Book[]) => {
+const toShelves = (list: Book[], size: number) => {
   const shelves: Book[][] = [];
-  for (let i = 0; i < list.length; i += SHELF_SIZE) {
-    shelves.push(list.slice(i, i + SHELF_SIZE));
+  for (let i = 0; i < list.length; i += size) {
+    shelves.push(list.slice(i, i + size));
   }
   return shelves;
 };
 
 // Single book spine standing on shelf
-const BookSpine = ({ book, onClick, index, visible }: {
+const BookSpine = ({ book, onClick, index, visible, small = false }: {
   book: Book;
   onClick: () => void;
   index: number;
   visible: boolean;
+  small?: boolean;
 }) => (
   <button
     onClick={onClick}
@@ -80,8 +82,8 @@ const BookSpine = ({ book, onClick, index, visible }: {
     <div
       className="relative cursor-pointer"
       style={{
-        width: 52,
-        height: 130,
+        width: small ? 36 : 52,
+        height: small ? 90 : 130,
         transition: "transform 0.25s ease, box-shadow 0.25s ease",
       }}
     >
@@ -220,9 +222,11 @@ const BookshelfSection = () => {
   const { ref, visible } = useScrollReveal();
   const [active, setActive] = useState("All");
   const [openBook, setOpenBook] = useState<Book | null>(null);
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 640;
+  const shelfSize = isMobile ? SHELF_SIZE_MOBILE : SHELF_SIZE;
 
   const filtered = active === "All" ? books : books.filter(b => b.category === active);
-  const shelves = toShelves(filtered);
+  const shelves = toShelves(filtered, shelfSize);
 
   return (
     <section id="bookshelf" className="section-padding" ref={ref}>
@@ -277,8 +281,9 @@ const BookshelfSection = () => {
                     key={book.title}
                     book={book}
                     onClick={() => setOpenBook(book)}
-                    index={si * SHELF_SIZE + bi}
+                    index={si * shelfSize + bi}
                     visible={visible}
+                    small={isMobile}
                   />
                 ))}
               </div>

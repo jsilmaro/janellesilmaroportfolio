@@ -23,15 +23,15 @@ const ContactSection = () => {
           to reach out.
         </p>
 
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Mail size={16} className="text-primary" />
-            <a href="mailto:silmaro.janelle84686@gmail.com" className="text-sm hover:text-foreground transition-colors">
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-8">
+          <div className="flex items-center gap-2 text-muted-foreground min-w-0">
+            <Mail size={16} className="text-primary shrink-0" />
+            <a href="mailto:silmaro.janelle84686@gmail.com" className="text-sm hover:text-foreground transition-colors break-all">
               silmaro.janelle84686@gmail.com
             </a>
           </div>
-          <div className="flex items-center gap-2 text-muted-foreground">
-            <Phone size={16} className="text-primary" />
+          <div className="flex items-center gap-2 text-muted-foreground shrink-0">
+            <Phone size={16} className="text-primary shrink-0" />
             <a href="tel:+639271537446" className="text-sm hover:text-foreground transition-colors">
               +63 927 153 7446
             </a>

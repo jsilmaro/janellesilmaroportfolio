@@ -15,6 +15,14 @@ const FlyingEnvelope = () => {
     const img  = imgRef.current;
     if (!wrap || !img) return;
 
+    // Hide on touch/mobile — envelope animation is desktop-only
+    if (window.matchMedia("(pointer: coarse)").matches || window.innerWidth < 768) {
+      gsap.set(wrap, { opacity: 0, pointerEvents: "none" });
+      // Still reveal the button immediately on mobile
+      setLanded(true);
+      return;
+    }
+
     const vw = window.innerWidth;
     const vh = window.innerHeight;
 

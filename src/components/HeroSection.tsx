@@ -32,8 +32,8 @@ const HeroSection = () => (
       }}
     />
 
-    <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-16 relative z-10">
-      <div className="flex-1 text-center md:text-left">
+    <div className="max-w-6xl mx-auto flex flex-col-reverse md:flex-row items-center gap-8 md:gap-16 relative z-10 w-full">
+      <div className="flex-1 text-center md:text-left w-full min-w-0">
 
         {/* Eyebrow label */}
         <p
@@ -45,7 +45,7 @@ const HeroSection = () => (
 
         {/* Name — HL gold metallic */}
         <h1
-          className="text-5xl sm:text-6xl lg:text-7xl font-bold leading-[1.1] mb-2 animate-fade-in-up"
+          className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-2 animate-fade-in-up"
           style={{
             fontFamily: "'Cinzel Decorative', serif",
             animationDelay: "0.1s",
