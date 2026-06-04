@@ -280,6 +280,70 @@ body { overflow-x: hidden; }
 }
 
 /* ── Marquee animations for SkillsSection ── */
+@keyframes scrollMarquee {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* Outer: applies the edge fade mask, allows tooltip overflow vertically */
+.tech-marquee-container {
+  width: 100%;
+  overflow: visible;
+  padding: 2rem 0;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0)   0%,
+    rgba(0, 0, 0, 1)  15%,
+    rgba(0, 0, 0, 1)  85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0)   0%,
+    rgba(0, 0, 0, 1)  15%,
+    rgba(0, 0, 0, 1)  85%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* Inner: clips horizontal overflow only, leaves vertical open for tooltips */
+.tech-marquee-clip {
+  width: 100%;
+  overflow: hidden;
+  /* Extra top padding so the tooltip pops up without being cut */
+  padding-top: 3rem;
+  margin-top: -3rem;
+}
+
+.tech-marquee-container:hover .tech-marquee-track {
+  animation-play-state: paused;
+}
+
+.tech-marquee-track {
+  display: flex;
+  width: max-content;
+  gap: 3.5rem;
+  animation: scrollMarquee 30s linear infinite;
+  will-change: transform;
+  /* bottom padding gives room for tooltip shadow */
+  padding-bottom: 0.5rem;
+}
+
+.tech-marquee-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: #D4C5B9;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+  cursor: default;
+  padding-right: 3.5rem;
+  margin-right: -3.5rem;
+}
+
+/* Keep old class names as aliases so nothing else breaks */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -290,8 +354,6 @@ body { overflow-x: hidden; }
 }
 .animate-marquee         { animation: marquee 28s linear infinite; }
 .animate-marquee-reverse { animation: marquee-reverse 28s linear infinite; }
-
-/* Pause marquee on hover */
 .animate-marquee:hover,
 .animate-marquee-reverse:hover { animation-play-state: paused; }
 
