@@ -29,7 +29,7 @@ const ExperienceSection = () => {
           {experiences.map((exp, i) => (
             <div
               key={i}
-              className={`glass-card p-5 rounded-xl flex flex-col gap-3 hover:glow-primary hover:-translate-y-1 transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              className={`exp-card p-5 rounded-xl flex flex-col gap-3 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
               style={{ transitionDelay: visible ? `${i * 100 + 200}ms` : "0ms" }}
             >
               {/* Header */}
@@ -63,9 +63,9 @@ const ExperienceSection = () => {
                   href={exp.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 text-xs text-primary hover:underline"
+                  className="exp-card-link inline-flex items-center gap-1 text-xs text-primary"
                 >
-                  {exp.linkLabel || "View"} <ExternalLink size={11} />
+                  {exp.linkLabel || "View"} <ExternalLink size={11} className="exp-card-link-icon" />
                 </a>
               )}
 
