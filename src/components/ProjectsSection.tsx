@@ -17,8 +17,25 @@ import designSample8 from "@/assets/design-sample-8.png";
 import designSample9 from "@/assets/design-sample-9.png";
 import designSample10 from "@/assets/design-sample-10.png";
 import designSample11 from "@/assets/design-sample-11.png";
+import designSample12 from "@/assets/design-sample-12.mp4";
+import designSample13 from "@/assets/design-sample-13.mp4";
 
-const designs = [designSample1, designSample2, designSample3, designSample4, designSample5, designSample6, designSample7, designSample8, designSample9, designSample10, designSample11];
+const designs = [
+  { src: designSample1, type: "image"},
+  { src: designSample2, type: "image"},
+  { src: designSample3, type: "image"},
+  { src: designSample4, type: "image"},
+  { src: designSample5, type: "image"},
+  { src: designSample6, type: "image"},
+  { src: designSample7, type: "image"},
+  { src: designSample8, type: "image"},
+  { src: designSample9, type: "image"},
+  { src: designSample10, type: "image"},
+  { src: designSample11, type: "image"},
+  { src: designSample12, type: "video"},
+  { src: designSample13, type: "video"},
+];
+
 
 const projects = [
   {
@@ -170,7 +187,7 @@ const ProjectsSection = () => {
 
         {/* Masonry gallery using CSS columns */}
         <div className="columns-2 md:columns-3 lg:columns-4 gap-3 space-y-3">
-          {designs.map((src, i) => (
+          {designs.map((item, i) => (
             <button
               type="button"
               key={i}
@@ -179,12 +196,26 @@ const ProjectsSection = () => {
               className={`group relative w-full break-inside-avoid overflow-hidden rounded-xl focus:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background block transition-all duration-500 ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
               style={{ transitionDelay: visible ? `${i * 60 + 400}ms` : "0ms" }}
             >
+
+            {item.type === "image" ? (
               <img
-                src={src}
-                alt={`Social media design ${i + 1}`}
-                loading="lazy"
+                src={item.src}
+                alt={'Social media design ${i + 1}'}
+                className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 rounded-x1"
+              />
+            ) : (
+              <video  
+                src={item.src}
+                muted
+                autoPlay
+                loop
+                playsInline
                 className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500 rounded-xl"
               />
+            )}
+              
+
+
               <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
                 <span className="text-white text-xs font-medium px-3 py-1.5 rounded-full bg-white/20 backdrop-blur border border-white/30">
                   View
@@ -269,11 +300,24 @@ const ProjectsSection = () => {
           </DialogTitle>
           {activeIndex !== null && (
             <div className="relative">
-              <img
-                src={designs[activeIndex]}
-                alt={`Social media design ${activeIndex + 1}`}
-                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
-              />
+             
+             
+              {designs[activeIndex].type === "image" ? (
+                <img
+                  src={designs[activeIndex].src}
+                  alt={`Social media design ${activeIndex + 1}`}
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                />
+              ) : (
+                <video
+                  src={designs[activeIndex].src}
+                  controls
+                  autoPlay
+                  className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                />
+              )}
+
+              
               <button 
                 onClick={showPrev} 
                 className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/80 transition-colors"
