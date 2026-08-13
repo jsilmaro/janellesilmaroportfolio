@@ -1,6 +1,5 @@
 import profilePhoto from "@/assets/profile-photo.jpg";
 import { MapPin, GraduationCap, ArrowRight, Mail } from "lucide-react";
-import Typewriter from "@/components/Typewriter";
 import FlyingEagle from "@/components/FlyingEagle";
 
 // Gold diamond divider — like the HL UI dividers
@@ -45,24 +44,22 @@ const HeroSection = () => (
 
         {/* Name — HL gold metallic */}
         <h1
-          className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-2 animate-fade-in-up"
+          className="text-4xl sm:text-5xl lg:text-7xl font-bold leading-[1.1] mb-2"
           style={{
             fontFamily: "'Cinzel Decorative', serif",
-            animationDelay: "0.1s",
             filter: "drop-shadow(0 0 20px rgba(200,144,48,0.45))",
           }}
         >
-          <Typewriter
-            words={["Janelle B. Silmaro"]}
-            className=""
-            cursorClassName="text-[#c8a030]"
+          <span
             style={{
               background: "linear-gradient(180deg,#f5e070 0%,#c89030 22%,#e8c040 45%,#9a6818 68%,#d4a830 85%,#f0d060 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
             }}
-          />
+          >
+            Janelle B. Silmaro
+          </span>
         </h1>
 
         {/* HL-style diamond divider */}
